@@ -1,0 +1,9 @@
+{
+	"name": "dipaliadf123",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "68fc13ec-aecd-4dfb-a3bb-d452113cba6b",
+		"tenantId": "f6d1f8b1-7e53-4d4a-89ed-272158b22030"
+	}
+}

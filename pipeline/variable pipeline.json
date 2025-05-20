@@ -1,0 +1,79 @@
+{
+	"name": "variable pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varz",
+					"value": "15"
+				}
+			},
+			{
+				"name": "set var z",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varz",
+					"value": {
+						"value": "@{add(int(variables('varx')),int(variables('vary')))}\n\n",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varz",
+					"value": {
+						"value": "@{add(int(variables('varx')),int(variables('vary')))}\n\n",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"varx": {
+				"type": "String",
+				"defaultValue": "10"
+			},
+			"vary": {
+				"type": "String",
+				"defaultValue": "45"
+			},
+			"varz": {
+				"type": "String",
+				"defaultValue": "5"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-05-20T20:50:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
